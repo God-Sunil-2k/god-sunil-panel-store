@@ -83,7 +83,7 @@ const panelsData = [
     ]
   },
   {
-    id:'pato-non root',
+    id:'pato-nonroot',
     name:'Pato Team - Non Root',
     badge:'Non Root',
     badgeType:'nonroot',
@@ -110,6 +110,108 @@ const panelsData = [
       {duration:'31 Days',price:'₹801'}
     ]
   },
+  {
+    id:'angry-root',
+    name:'Angry Mod - Root',
+    badge:'Root',
+    badgeType:'root',
+    logo:'https://i.ibb.co/9kYhRhFF/IMG-20260704-202329-705.jpg',
+    downloadLink:'https://t.me/AngryModOfficialChannel',
+    plans:[
+      {duration:'1 Day',price:'₹90'},
+      {duration:'7 Days',price:'₹340'},
+      {duration:'15 Day',price:'₹554'},
+      {duration:'30 Day',price:'₹800'}
+    ]
+  },
+  {
+    id:'silent-cheats-root-safe',
+    name:'Silent Cheats Root - Safe',
+    badge:'Root',
+    badgeType:'nonroot',
+    logo:'https://i.ibb.co/d4w53k5S/IMG-20260717-090622-599.jpg',
+    downloadLink:'https://t.me/Silentcheats_OFC',
+    plans:[
+      {duration:'1 Day',price:'₹90'},
+      {duration:'3 Days',price:'₹180'},
+      {duration:'7 Days',price:'₹350'},
+      {duration:'14 Days',price:'₹699'},
+      {duration:'28 Days',price:'₹900'}
+    ]
+  },
+  {
+    id:'HAXX CKER PRO - Root',
+    name:'HAXX CKER PRO - Root',
+    badge:'Root',
+    badgeType:'root',
+    logo:'https://i.ibb.co/Ps5Lrgjv/IMG-20260728-104821-172.jpg',
+    downloadLink:'https://t.me/+PZSUld7gW2I0Y2Q1',
+    plans:[
+      {duration:'10 Day',price:'₹549'},
+      {duration:'20 Days',price:'₹1044'},
+      {duration:'30 Days',price:'₹1449'},
+      {duration:'60 Days',price:'₹2700'},
+      {duration:'120 Days',price:'₹5400'}
+    ]
+  }
+];
+
+// ===== Render Panels =====
+const container = document.getElementById('panelsContainer');
+function gC(t){return t==='root'?'badge-root':t==='nonroot'?'badge-nonroot':'badge-pro'}
+function bC(t){return t==='root'?'':t==='nonroot'?'gold':'purple'}
+function mM(t){return t==='root'?'root':t==='nonroot'?'nonroot':'pro'}
+
+function render(){
+  let h='';
+  panelsData.forEach(p=>{
+    const bc = gC(p.badgeType);
+    const bc2 = bC(p.badgeType);
+    const mC = mM(p.badgeType);
+    let ph='';
+    p.plans.forEach(pl=>{
+      ph+=`<div class="price-card">
+        <span class="duration"><i class="fas fa-clock"></i> ${pl.duration}</span>
+        <span class="price">${pl.price}</span>
+        <span class="badge-mini ${mC}">${p.badgeType==='root'?'Root':p.badgeType==='pro'?'Pro':'Non-Root'}</span>
+        <button class="btn-buy ${bc2}" data-panel="${p.name}" data-duration="${pl.duration}" data-price="${pl.price}">
+          <i class="fas fa-cart-plus"></i> Buy Now
+        </button>
+        <a href="${p.downloadLink}" target="_blank" class="download-link">
+          <i class="fas fa-download"></i> Download APK
+        </a>
+      </div>`;
+    });
+    const ic = p.badgeType==='root'?'check-circle':p.badgeType==='pro'?'star':'circle';
+    h+=`<section class="panel-section">
+      <div class="panel-header">
+        <img class="panel-logo" src="${p.logo}" alt="${p.name} logo" loading="lazy">
+        <div class="panel-meta">
+          <div class="panel-name">${p.name}</div>
+          <span class="panel-badge ${bc}"><i class="fas fa-${ic}"></i> ${p.badge}</span>
+        </div>
+      </div>
+      <div class="pricing-grid">${ph}</div>
+    </section>`;
+  });
+  container.innerHTML = h;
+}
+render();
+
+// ===== Modal & QR =====
+const modal = document.getElementById('paymentModal');
+const mClose = document.getElementById('modalClose');
+const mName = document.getElementById('modalProductName');
+const mDur = document.getElementById('modalDuration');
+const mPrice = document.getElementById('modalPrice');
+const upiEl = document.getElementById('upiId');
+const copyBtn = document.getElementById('copyUpiBtn');
+const qrEl = document.getElementById('qrCodeContainer');
+const UPI = 'suniloraon382@upi';
+
+function genQR(amt){
+  qrEl.innerHTML='';
+  const s=`upi://pay?pa=${UPI}&pn=God%20Sunil%20Store&a  },
   {
     id:'angry-root',
     name:'Angry Mod - Root',
